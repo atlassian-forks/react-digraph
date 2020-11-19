@@ -32,6 +32,7 @@ import {
   getEdgePathElement,
   calculateOffset,
 } from '../helpers/edge-helpers';
+import cssEscape from 'css.escape';
 
 type IViewTransform = {
   k: number,
@@ -1386,7 +1387,9 @@ class GraphView extends React.Component<IGraphViewProps, IGraphViewState> {
     let nodeContainer:
       | HTMLElement
       | Element
-      | null = this.viewWrapper.current.querySelector(`[id='${containerId}']`);
+      | null = this.viewWrapper.current.querySelector(
+      `[id='${cssEscape(containerId)}']`
+    );
 
     if (!nodeContainer) {
       nodeContainer = document.createElementNS(
@@ -1470,18 +1473,18 @@ class GraphView extends React.Component<IGraphViewProps, IGraphViewState> {
     const { draggedEdge } = this.state;
     const { afterRenderEdge } = this.props;
     let edgeContainer = this.viewWrapper.current.querySelector(
-      `[id='${containerId}']`
+      `[id='${cssEscape(containerId)}']`
     );
 
     if (nodeMoving && edgeContainer) {
       edgeContainer.style.display = 'none';
       containerId = `${id}-custom-container`;
       edgeContainer = this.viewWrapper.current.querySelector(
-        `[id='${containerId}']`
+        `[id='${cssEscape(containerId)}']`
       );
     } else if (edgeContainer) {
       const customContainer = this.viewWrapper.current.querySelector(
-        `[id='${customContainerId}']`
+        `[id='${cssEscape(customContainerId)}']`
       );
 
       edgeContainer.style.display = '';
@@ -1672,7 +1675,9 @@ class GraphView extends React.Component<IGraphViewProps, IGraphViewState> {
       return;
     }
 
-    const node = this.entities.querySelector(`[id='node-${id}-container']`);
+    const node = this.entities.querySelector(
+      `[id='node-${cssEscape(id)}-container']`
+    );
 
     this.panToEntity(node, zoom);
   }
@@ -1683,7 +1688,7 @@ class GraphView extends React.Component<IGraphViewProps, IGraphViewState> {
     }
 
     const edge = this.entities.querySelector(
-      `[id='edge-${source}-${target}-container']`
+      `[id='edge-${cssEscape(source)}-${cssEscape(target)}-container']`
     );
 
     this.panToEntity(edge, zoom);

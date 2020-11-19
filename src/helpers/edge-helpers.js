@@ -7,6 +7,7 @@ import {
   getPathIntersect,
   getCircleIntersect,
 } from './intersect-helpers';
+import cssEscape from 'css.escape';
 
 export function getShapeId(edgeTypes: any, data: any) {
   if (data.type && edgeTypes[data.type]) {
@@ -65,7 +66,9 @@ export function getEdgePathElement(
   viewWrapperElem: HTMLDivElement
 ) {
   return viewWrapperElem.querySelector(
-    `[id='edge-${edge.source}-${edge.target}-container']>.edge-container>.edge>.edge-path`
+    `[id='edge-${cssEscape(edge.source)}-${cssEscape(
+      edge.target
+    )}-container']>.edge-container>.edge>.edge-path`
   );
 }
 

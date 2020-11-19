@@ -18,6 +18,7 @@
 import { type IEdge } from '../components/edge';
 import { type INode } from '../components/node';
 import fastDeepEqual from 'fast-deep-equal';
+import cssEscape from 'css.escape';
 
 export type INodeMapNode = {
   node: INode,
@@ -96,7 +97,7 @@ class GraphUtils {
   }
 
   static removeElementFromDom(id: string, searchElement?: any = document) {
-    const container = searchElement.querySelector(`#${id}`);
+    const container = searchElement.querySelector(`#${cssEscape(id)}`);
 
     if (container && container.parentNode) {
       container.parentNode.removeChild(container);
