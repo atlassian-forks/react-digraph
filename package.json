@@ -1,5 +1,5 @@
 {
-  "name": "react-digraph",
+  "name": "@atlassian-forks/react-digraph",
   "description": "directed graph react component",
   "version": "7.0.0-alpha.5",
   "keywords": [
@@ -13,12 +13,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/uber/react-digraph.git"
+    "url": "https://github.com/atlassian-forks/react-digraph.git"
   },
-  "bugs": {
-    "url": "https://github.com/uber/react-digraph/issues/new",
-    "email": "antonb@uber.com"
-  },
+  "bugs": "https://github.com/atlassian-forks/react-digrap.git",
   "engines": {
     "node": ">= 0.10.0"
   },
